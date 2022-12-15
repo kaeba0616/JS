@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lost ark</title>
+</head>
+<body>
+  <input id="nickname" value = "" type="text">
+  <button id ="search">검색</button>
+  <p></p>
+  <h1>my site</h1>
+  <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
+    crossorigin="anonymous"></script>
+  <Script>
+    $(document).ready(function () {
+      $("#search").click(function () {
+        $.ajax({
+        method: "GET",
+        url: "https://developer-lostark.game.onstove.com/armories/characters/%EC%82%B4%EB%A9%B4%EB%B0%B1%EB%A7%8C%EC%9B%90/profiles",
+        data: { query: $("nickname").val() },
+        headers: { accept : "application/json",
+          Authorization: "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAwMDA4NjAifQ.k8A8EBwTnUxF2seQYxXaCyOzdGKVFgljttXR26DESlCEQmHSDhlldytB8mcVBTAVWWV1LlxeT_FIif88AdspKGQxUJuuswbuisZFiay-I40r-ZFuMdsmAZdmZcePWjFznxlDjICKIrkBh9awdMZ5b_Jg1zWvBia6_NDOYs4w2L588yJP9Uf-6jHqMYc5qG6Ri2lgGwowxrsee09G0eT86Y5Eg1T5K5Q_nk24vc4P0vHaDuiqMgMzxNxA7aqYyCfmVsHkiU5LRCK2DDqlt7tdlVnNvf7oQoLEWiFta2Uzmk1htv0JQTMg9hP7NDtHYOoCXAwdDQD8ctHVSitPQzudIA" }
+      })
+      .done(function (msg) {
+        console.log(msg);
+        $("p").append("<strong>" + msg.CharacterName + "</strong>");
+        $("p").append("<img src ='" + msg.CharacterImage + "'</>");
+      });
+    });
+  });
+</Script>
+</body>
+</html>
